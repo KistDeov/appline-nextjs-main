@@ -1,11 +1,12 @@
 export default function Head() {
   return (
     <>
-      {/* Standard favicon links */}
-      <link rel="icon" href="/images/icon.ico" />
-      <link rel="shortcut icon" href="/images/icon.ico" />
+      {/* Primary favicon (browsers and Google often request /favicon.ico) */}
+      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="shortcut icon" href="/favicon.ico" />
 
-      {/* Apple touch icon */}
+      {/* Fallbacks (keep the image in case you want a separate path) */}
+      <link rel="icon" href="/images/icon.ico" />
       <link rel="apple-touch-icon" href="/images/icon.ico" />
 
       {/* Theme and tile color hints */}

@@ -18,9 +18,9 @@ export const metadata: Metadata = {
   description:
     "AI által vezérelt automata levelező program",
   icons: {
-    icon: "/images/icon.ico",
-    shortcut: "/images/icon.ico",
-    apple: "/images/icon.ico",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
 };
 
