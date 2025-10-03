@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+"use client";
+
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -13,12 +14,6 @@ import AuthProvider from "../context/AuthContext";
 import ToasterContext from "../context/ToastContext";
 import { Analytics } from '@vercel/analytics/next';
 
-export const metadata: Metadata = {
-  icons: {
-    icon: '/images/icon.ico',
-  },
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,11 +21,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-
-      {/* Metadata export is used by Next.js App Router for head elements such as favicons. */}
-      {/* The project already contains public/images/icon.ico — we'll point metadata to that path. */}
-      {/* If you prefer the filename /images/favicon.ico, replace the path below and add that file to public/images. */}
-
       <body className={inter.className}>
         <NextTopLoader
           color="#006BFF"
