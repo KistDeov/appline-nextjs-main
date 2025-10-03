@@ -16,7 +16,8 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Okos Mail",
   description:
-    "AI által vezérelt automata levelező program"
+    "AI által vezérelt automata levelező program",
+  icons: "/favicon.ico",
 };
 
 export default function Home() {
