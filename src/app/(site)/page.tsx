@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Okos Mail",
   description:
     "AI által vezérelt automata levelező program",
-  icons: "/favicon.ico",
+  icons: "images/icon.ico",
 };
 
 export default function Home() {
