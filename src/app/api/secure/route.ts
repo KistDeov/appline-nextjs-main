@@ -30,18 +30,45 @@ export async function GET(request: Request) {
 
   const auth = await authorize(request);
   if (!auth.ok) {
-    return new NextResponse(JSON.stringify({ error: "unauthorized" }), { status: 401 });
+    const response = new NextResponse(JSON.stringify({ error: "unauthorized" }), { status: 401 });
+    // CORS headers hozzáadása
+    response.headers.set('Access-Control-Allow-Origin', 'https://localhost:3000');
+    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    return response;
   }
 
   // only one top-level route: /api/secure/keys
   if (pathname.endsWith("/api/secure/keys")) {
-    return NextResponse.json({
+    const response = NextResponse.json({
       DATABASE_URL: maskPresence(process.env.DATABASE_URL),
       OPENAI_API_KEY: maskPresence(process.env.OPENAI_API_KEY),
     });
+    // CORS headers hozzáadása
+    response.headers.set('Access-Control-Allow-Origin', 'https://localhost:3000');
+    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    return response;
   }
 
-  return new NextResponse(JSON.stringify({ error: "not found" }), { status: 404 });
+  const response = new NextResponse(JSON.stringify({ error: "not found" }), { status: 404 });
+  // CORS headers hozzáadása
+  response.headers.set('Access-Control-Allow-Origin', 'https://localhost:3000');
+  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  return response;
+}
+
+// OPTIONS method kezelése (preflight request)
+export async function OPTIONS(request: Request) {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': 'https://localhost:3000',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  });
 }
 
 export async function POST(request: Request) {
