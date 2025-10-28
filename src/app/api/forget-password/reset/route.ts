@@ -34,7 +34,8 @@ export async function POST(request: NextRequest) {
       email,
     },
     data: {
-      passwordResetToken: resetToken,
+      // store the hashed token in the database; the raw token is sent to the user
+      passwordResetToken: hashedToken,
       passwordResetTokenExp,
     },
   });
