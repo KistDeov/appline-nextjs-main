@@ -1,7 +1,6 @@
 import ResetPassword from "@/components/Auth/ResetPassword";
 import axios from "axios";
 import { redirect } from "next/navigation";
-import toast from "react-hot-toast";
 
 type PropsType = {
   params: Promise<{ token: string }>;
@@ -15,7 +14,8 @@ export default async function Page(props: PropsType) {
   try {
     userEmail = await verifyToken(params.token);
   } catch (error) {
-    toast.error("Token is invalid or has expired. Please request a new one.");
+    // Cannot call client-side toast on the server — just redirect the user.
+    // Client can show a message after redirect if needed.
     redirect("/auth/forget-password");
   }
 
