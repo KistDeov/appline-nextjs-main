@@ -44,21 +44,21 @@ export async function POST(request: NextRequest) {
   try {
     await sendEmail({
       to: email,
-      subject: "Reset your password",
+      subject: "Jelszó visszaállítása",
       html: ` 
       <div>
-        <h1>You requested a password reset</h1>
-        <p>Click the link below to reset your password</p>
-        <a href="${resetURL}" target="_blank">Reset Password</a>
+        <h1>Jelszó visszaállítása</h1>
+        <p>Kattints az alábbi linkre a jelszavad visszaállításához</p>
+        <a href="${resetURL}" target="_blank">Jelszó visszaállítása</a>
       </div>
       `,
     });
 
-    return NextResponse.json("An email has been sent to your email", {
+    return NextResponse.json("A levelet elküldtük az email címedre", {
       status: 200,
     });
   } catch (error) {
-    return NextResponse.json("An error has occurred. Please try again!", {
+    return NextResponse.json("Hiba történt. Kérlek, próbáld újra!", {
       status: 500,
     });
   }

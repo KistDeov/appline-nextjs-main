@@ -35,7 +35,7 @@ export function SignUpForm() {
         name: payload.fullName,
       });
 
-      toast.success("User has been registered");
+      toast.success("Sikeres regisztráció!");
       reset();
     } catch (error) {
       toast.error("Something went wrong");
